@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, QueryList } from '@angular/core';
 import { CellComponent } from './cell/cell.component';
 
 @Injectable({
@@ -31,14 +31,14 @@ export class CellService {
     currentCell.value = 0;
   }
 
-  resetCells(cells: CellComponent[]): void {
+  resetCells(cells: QueryList<CellComponent>): void {
     cells.forEach((cell) => {
       cell.isAviable = false;
       cell.isMatched = false;
     });
   }
 
-  checkFail(matchedCells: number, cells: CellComponent[]): void {
+  checkFail(matchedCells: number, cells: QueryList<CellComponent>): void {
     if (matchedCells < 100 && !cells.find((cell) => cell.isAviable === true)) {
       alert('You lost!');
     } else if (matchedCells === 100) alert('You win!!');

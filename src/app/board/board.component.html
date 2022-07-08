@@ -4,9 +4,12 @@
 <button (click)="stepBack()">{{ "step back" | uppercase }}</button>
 <div class="board">
   <p>Matched: {{ matchedCells }} from 100</p>
-  <div class="row" *ngFor="let c of count; let i = index">
+  <div
+    class="row"
+    *ngFor="let c of count; let i = index; trackBy: trackByCells"
+  >
     <app-cell
-      *ngFor="let c of count; let j = index"
+      *ngFor="let c of count; let j = index; trackBy: trackByCells"
       [y]="i"
       [x]="j"
       [matchedCells]="matchedCells"

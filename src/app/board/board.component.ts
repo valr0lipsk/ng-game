@@ -1,4 +1,11 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  QueryList,
+  ChangeDetectionStrategy,
+  ViewChildren,
+} from '@angular/core';
 import { CellService } from '../cell.service';
 import { CellComponent } from '../cell/cell.component';
 
@@ -6,9 +13,10 @@ import { CellComponent } from '../cell/cell.component';
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BoardComponent implements OnInit {
-  @ViewChildren(CellComponent) cells: QueryList<CellComponent> | any;
+  @ViewChildren(CellComponent) cells!: QueryList<CellComponent>;
   count = new Array(10);
   currentCell: CellComponent | null = null;
   steps: CellComponent[] = [];
@@ -17,6 +25,10 @@ export class BoardComponent implements OnInit {
   constructor(public cellService: CellService) {}
 
   ngOnInit(): void {}
+
+  trackByCells(index: number, c: number) {
+    return c;
+  }
 
   matchCurrent(cell: CellComponent): void {
     cell.isAviable = false;
