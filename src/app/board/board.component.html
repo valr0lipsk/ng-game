@@ -1,0 +1,16 @@
+<button (click)="resetBoard()">
+  {{ "reset" | uppercase }}
+</button>
+<button (click)="stepBack()">{{ "step back" | uppercase }}</button>
+<div class="board">
+  <p>Matched: {{ matchedCells }} from 100</p>
+  <div class="row" *ngFor="let c of count; let i = index">
+    <app-cell
+      *ngFor="let c of count; let j = index"
+      [y]="i"
+      [x]="j"
+      [matchedCells]="matchedCells"
+      (setCurrent)="matchCurrent($event)"
+    ></app-cell>
+  </div>
+</div>

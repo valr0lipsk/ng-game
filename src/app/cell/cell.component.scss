@@ -1,0 +1,24 @@
+.cell {
+  background-color: darkcyan;
+  width: 50px;
+  height: 100%;
+  border: 1px black solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.circle {
+  background-color: white;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  position: relative;
+  text-align: center;
+  font-size: small;
+}
+
+.aviable {
+  background-color: aquamarine;
+}

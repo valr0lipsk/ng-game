@@ -1,0 +1,3 @@
+<div [ngClass]="isAviable ? 'cell aviable' : 'cell'" (click)="matchCell(this)">
+  <div *ngIf="isMatched" class="circle">{{ value }}</div>
+</div>
