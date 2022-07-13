@@ -1,0 +1,54 @@
+<div *ngIf="isShowing" class="modal">
+  <div class="modal__header">
+    <span class="border header__border-top"></span>
+    <ng-container *ngIf="isWin === false">
+      <p class="modal__title">{{ "sorry" | uppercase }}</p>
+    </ng-container>
+
+    <ng-container *ngIf="isWin">
+      <p class="modal__title">{{ "congrats!" | uppercase }}</p>
+    </ng-container>
+
+    <button type="button" class="header__button" (click)="onClick()">
+      <img src="../../assets/img/close.png" alt="close" />
+    </button>
+    <span class="border header__border-bottom"></span>
+  </div>
+
+  <div class="modal__body">
+    <ng-container *ngIf="isWin === false">
+      <div class="body__img">
+        <img src="../../assets/img/Bored.svg" alt="Bored" />
+      </div>
+      <p>You lose!</p>
+      <button class="modal__button" (click)="onReset()">
+        <span class="border button__border-top"></span>
+        <span class="gradient-elipse button__gradient-elipse_top"></span>
+        <span class="button__divider"></span>
+        <span class="border button__border-bottom"></span>
+        <span class="gradient-elipse button__gradient-elipse_bottom"></span>
+        <p>{{ "restart" | uppercase }}</p>
+      </button></ng-container
+    >
+
+    <ng-container *ngIf="isWin"
+      ><div class="body__img">
+        <img src="../../assets/img/Laugh.svg" alt="Laugh" />
+      </div>
+      <p>You are WINNER!</p>
+      <button class="modal__button" (click)="onReset()">
+        <span class="border button__border-top"></span>
+        <span class="gradient-elipse button__gradient-elipse_top"></span>
+        <span class="button__divider"></span>
+        <span class="border button__border-bottom"></span>
+        <span class="gradient-elipse button__gradient-elipse_bottom"></span>
+        <p>{{ "restart" | uppercase }}</p>
+      </button></ng-container
+    >
+  </div>
+
+  <div class="modal__footer">
+    <span class="border footer__border-top"></span>
+    <span class="border footer__border-bottom"></span>
+  </div>
+</div>

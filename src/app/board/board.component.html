@@ -1,19 +1,25 @@
-<button (click)="resetBoard()">
-  {{ "reset" | uppercase }}
-</button>
-<button (click)="stepBack()">{{ "step back" | uppercase }}</button>
-<div class="board">
-  <p>Matched: {{ matchedCells }} from 100</p>
-  <div
-    class="row"
-    *ngFor="let c of count; let i = index; trackBy: trackByCells"
-  >
-    <app-cell
-      *ngFor="let c of count; let j = index; trackBy: trackByCells"
-      [y]="i"
-      [x]="j"
-      [matchedCells]="matchedCells"
-      (setCurrent)="matchCurrent($event)"
-    ></app-cell>
+<div class="container">
+  <div class="circle circle-1"></div>
+  <div class="circle circle-2"></div>
+  <h1 class="title">{{ count.length }} x {{ count.length }}</h1>
+  <div class="buttons-block">
+    <button class="button__button-reset" (click)="resetBoard()">
+      {{ "reset" | uppercase }}
+    </button>
+    <button class="button__button-back" (click)="stepBack()">
+      {{ "step back" | uppercase }}
+    </button>
+  </div>
+  <div class="board">
+    <div class="board__row" *ngFor="let c of count; let i = index">
+      <app-cell
+        *ngFor="let c of count; let j = index"
+        [y]="i"
+        [x]="j"
+        [matchedCells]="matchedCells"
+        (setCurrent)="matchCurrent($event)"
+      ></app-cell>
+    </div>
   </div>
 </div>
+<app-modal [isWin]="modal.isWin" [isShowing]="modal.isShowing"></app-modal>

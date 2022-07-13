@@ -28,6 +28,7 @@ export class CellService {
   resetCell(currentCell: CellComponent): void {
     currentCell.isMatched = false;
     currentCell.isAviable = false;
+    currentCell.isCurrent = false;
     currentCell.value = 0;
   }
 
@@ -35,12 +36,13 @@ export class CellService {
     cells.forEach((cell) => {
       cell.isAviable = false;
       cell.isMatched = false;
+      cell.isCurrent = false;
     });
   }
 
-  checkFail(matchedCells: number, cells: QueryList<CellComponent>): void {
+  checkWin(matchedCells: number, cells: QueryList<CellComponent>): any {
     if (matchedCells < 100 && !cells.find((cell) => cell.isAviable === true)) {
-      alert('You lost!');
-    } else if (matchedCells === 100) alert('You win!!');
+      return false;
+    } else if (matchedCells === 100) return true;
   }
 }

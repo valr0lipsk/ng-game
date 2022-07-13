@@ -1,7 +1,5 @@
 import {
-  ChangeDetectorRef,
   Component,
-  OnInit,
   QueryList,
   ChangeDetectionStrategy,
   ViewChildren,
@@ -15,32 +13,41 @@ import { CellComponent } from '../cell/cell.component';
   styleUrls: ['./board.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent {
   @ViewChildren(CellComponent) cells!: QueryList<CellComponent>;
   count = new Array(10);
   currentCell: CellComponent | null = null;
   steps: CellComponent[] = [];
   matchedCells = 0;
+  modal = { isShowing: false, isWin: false };
 
   constructor(public cellService: CellService) {}
 
-  ngOnInit(): void {}
-
-  trackByCells(index: number, c: number) {
-    return c;
-  }
-
   matchCurrent(cell: CellComponent): void {
     cell.isAviable = false;
-    cell.isMatched = true;
+    if (this.currentCell) this.currentCell.isMatched = true;
+    const current = this.cells.find((cell) => cell.isCurrent === true);
+    if (current) current.isCurrent = false;
     if (this.currentCell) this.steps.push(this.currentCell);
-    this.currentCell = cell;
+    {
+      cell.isCurrent = true;
+      this.currentCell = cell;
+    }
     this.cells.map((c: CellComponent) => {
       this.cellService.checkAviable(c, this.currentCell);
     });
     this.matchedCells++;
-    if (this.matchedCells > 0)
-      this.cellService.checkFail(this.matchedCells, this.cells);
+    if (this.matchedCells > 0) {
+      if (this.cellService.checkWin(this.matchedCells, this.cells) === true) {
+        this.modal.isShowing = true;
+        this.modal.isWin = true;
+      } else if (
+        this.cellService.checkWin(this.matchedCells, this.cells) === false
+      ) {
+        this.modal.isShowing = true;
+        this.modal.isWin = false;
+      }
+    }
   }
 
   resetBoard(): void {
@@ -48,6 +55,7 @@ export class BoardComponent implements OnInit {
     this.currentCell = null;
     this.matchedCells = 0;
     this.steps = [];
+    this.modal.isShowing = false;
   }
 
   stepBack(): void {

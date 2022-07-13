@@ -1,3 +1,24 @@
-<div [ngClass]="isAviable ? 'cell aviable' : 'cell'" (click)="matchCell(this)">
-  <div *ngIf="isMatched" class="circle">{{ value }}</div>
+<div
+  [ngClass]="isAviable ? 'cell cell__aviable' : 'cell'"
+  (click)="matchCell(this)"
+>
+  <div *ngIf="isMatched" class="cell__circle cell__circle-matched">
+    <p>{{ value }}</p>
+  </div>
+
+  <div
+    *ngIf="isAviable"
+    class="cell__circle cell__circle-outline cell__circle-outline-aviable"
+  >
+    <div class="cell__circle cell__circle-aviable"></div>
+  </div>
+
+  <div
+    *ngIf="isCurrent"
+    class="cell__circle cell__circle-outline cell__circle-outline-current"
+  >
+    <div class="cell__circle cell__circle-current">
+      <p>{{ value }}</p>
+    </div>
+  </div>
 </div>

@@ -1,24 +1,81 @@
 .cell {
-  background-color: darkcyan;
-  width: 50px;
+  background: linear-gradient(
+    180deg,
+    #ffffff -31.99%,
+    rgba(255, 255, 255, 0) 113.98%
+  );
+  width: 64px;
   height: 100%;
-  border: 1px black solid;
+  border-radius: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
+  margin: 0 12px 0 0;
+  filter: drop-shadow(-21px 15px 50px rgba(29, 38, 70, 0.25));
 }
 
-.circle {
-  background-color: white;
-  width: 17px;
-  height: 17px;
+.cell__circle {
   border-radius: 50%;
   position: relative;
   text-align: center;
   font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > p {
+    color: white;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: (24px /16px);
+  }
 }
 
-.aviable {
-  background-color: aquamarine;
+.cell__circle-matched {
+  background: linear-gradient(220.53deg, #b2f763 0%, #26ab3f 76.95%);
+  width: 37px;
+  height: 37px;
+  z-index: 1;
+}
+
+.cell__circle-aviable {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(180deg, #ffb800 0%, #ff1f00 100%);
+  z-index: 9999;
+}
+
+.cell__circle-outline {
+  background: linear-gradient(
+    rgba(255, 255, 255, 1) 0,
+    rgba(255, 255, 255, 0) 70.88%
+  );
+
+  & .cell__circle-outline-aviable {
+    width: 26px;
+    height: 26px;
+  }
+
+  &.cell__circle-outline-current {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.cell__circle-current {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(180deg, #ffb800 0%, #ff1f00 100%);
+}
+
+.cell__aviable {
+  background: linear-gradient(
+    180deg,
+    rgba(237, 199, 255, 0.46) 0.89%,
+    rgba(171, 119, 255, 0.74) 100.88%
+  );
+  box-shadow: 0px 0px 38px rgba(158, 108, 255, 0.4),
+    -21px 15px 50px rgba(29, 38, 70, 0.25);
 }

@@ -19,7 +19,10 @@ export class CellComponent {
   value = 0;
   isMatched = false;
   isAviable = false;
+  isCurrent = false;
   @Output() setCurrent = new EventEmitter<CellComponent>();
+
+  constructor() {}
 
   matchCell(cell: CellComponent): void {
     if (
@@ -30,4 +33,6 @@ export class CellComponent {
       this.setCurrent.emit(cell);
     }
   }
+
+  ngOnDestroy() {}
 }

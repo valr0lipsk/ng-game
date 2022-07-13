@@ -1,21 +1,92 @@
+.container {
+  position: relative;
+  width: 860px;
+  height: 946px;
+  background: linear-gradient(
+    111.49deg,
+    rgba(255, 255, 255, 0.4) -8.95%,
+    rgba(255, 255, 255, 0.01) 114%
+  );
+  border-radius: 25px;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
 .board {
-  width: calc(50px * 10);
-  height: calc(50px * 10);
+  width: max-content;
+  max-width: 780px;
+  height: max-content;
   display: flex;
   flex-wrap: wrap;
   margin: auto;
+  background: linear-gradient(180deg, #aac2ff 0%, #c81bf1 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(101px);
+  border-radius: 20px;
+  padding: 16px;
+  box-sizing: border-box;
+  margin: 0;
 }
 
-.row {
-  width: 100%;
-  height: 50px;
+.board__row {
+  max-width: 780px;
+  height: 64px;
   display: flex;
+  margin: 12px 0 0 0;
+  &:first-of-type {
+    margin-top: 0;
+  }
 }
 
-p {
-  margin: 5px auto;
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: calc(72px / 48px);
+  margin: 0;
+  // margin-bottom: 20px;
+  text-transform: capitalize;
+  background: linear-gradient(
+    180deg,
+    #296399 54.68%,
+    rgba(255, 255, 255, 0) 187.46%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-button:first-of-type {
-  margin-right: 5px;
+.circle {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle-1 {
+  width: 428px !important;
+  height: 428px !important;
+  background: linear-gradient(90deg, #fc00ff 0%, #00dbde 100%);
+  transform: rotate(-105deg);
+  z-index: -99;
+  left: calc(0px - (428px / 2));
+  top: 26px;
+}
+
+.circle-2 {
+  width: 380px;
+  height: 380px;
+  background: linear-gradient(90deg, #e65c00 0%, #f9d423 100%);
+  z-index: -99;
+  right: (0px - (380px /2) - (380 * 0.005));
+  bottom: (0px - (380px/2)+ (380px * 0.1));
+}
+
+.buttons-block {
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
 }
