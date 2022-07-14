@@ -1,14 +1,27 @@
 <div class="container">
   <div class="circle circle-1"></div>
   <div class="circle circle-2"></div>
-  <h1 class="title">{{ count.length }} x {{ count.length }}</h1>
-  <div class="buttons-block">
-    <button class="button__button-reset" (click)="resetBoard()">
-      {{ "reset" | uppercase }}
-    </button>
-    <button class="button__button-back" (click)="stepBack()">
-      {{ "step back" | uppercase }}
-    </button>
+  <div class="header">
+    <h1 class="title">{{ count.length }} x {{ count.length }}</h1>
+    <div class="buttons-block">
+      <button class="button button__button-back" (click)="stepBack()">
+        <span class="border button__border-top"></span>
+        <span class="gradient-elipse button__gradient-elipse_top"></span>
+        <span class="button__divider"></span>
+        <span class="border button__border-bottom"></span>
+        <span class="gradient-elipse button__gradient-elipse_bottom"></span>
+        <p>{{ "step back" | uppercase }}</p>
+      </button>
+
+      <button class="button button__button-reset" (click)="resetBoard()">
+        <span class="border button__border-top"></span>
+        <span class="gradient-elipse button__gradient-elipse_top"></span>
+        <span class="button__divider"></span>
+        <span class="border button__border-bottom"></span>
+        <span class="gradient-elipse button__gradient-elipse_bottom"></span>
+        <p>{{ "restart" | uppercase }}</p>
+      </button>
+    </div>
   </div>
   <div class="board">
     <div class="board__row" *ngFor="let c of count; let i = index">
